@@ -18,7 +18,7 @@ module.exports = (env) => {
                 test: /\.js$/,
                 exclude: /node_modules/    
             }, {
-                test: /\.s?css$/,   // ? - make 's' optional
+                test: /\.s?css$/,
                 use: CSSExtract.extract({
                     use: [
                         {
