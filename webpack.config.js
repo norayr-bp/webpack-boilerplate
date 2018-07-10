@@ -1,5 +1,6 @@
 const path = require('path');  
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = (env) => {
     const isProduction = env === 'production';
@@ -34,14 +35,17 @@ module.exports = (env) => {
         },
 
         plugins: [
-            CSSExtract
+            CSSExtract,
+            new HtmlWebpackPlugin({
+                title: 'Webpack boilerplate',
+                template: './src/index.html'
+            })
         ],
     
         devtool: isProduction ? 'source-map' : 'inline-source-map', 
     
         devServer: {
-            contentBase: path.join(__dirname, 'build'),
-            port: 9000
+            contentBase: path.join(__dirname, 'build')
           }
     };
 };
